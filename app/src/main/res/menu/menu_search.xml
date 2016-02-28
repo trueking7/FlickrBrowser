@@ -1,17 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:flickr="http://schemas.android.com/apk/res-auto"
-    tools:context="ca.truewebdev.flickrbrowser.MainActivity">
+  >
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Settings"
         flickr:showAsAction="never" />
 
-    <item android:id="@+id/menu_search"
+    <item android:id="@+id/search_view"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="@string/search"
+        android:title="@string/search_menu"
         android:orderInCategory="1"
+        flickr:actionViewClass="android.support.v7.widget.SearhView"
         flickr:showAsAction="always"/>
+
 </menu>
