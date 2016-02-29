@@ -19,11 +19,10 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrImageV
     private Context mContext;
     private final String LOG_TAG = FlickrRecyclerViewAdapter.class.getSimpleName();
 
-    public FlickrRecyclerViewAdapter(Context context, List<Photo> photosList){
+    public FlickrRecyclerViewAdapter(Context context, List<Photo> photosList) {
         mContext = context;
         this.mPhotosList = photosList;
     }
-
 
     @Override
     public FlickrImageViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -33,17 +32,15 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrImageV
         return flickrImageViewHolder;
     }
 
-
     @Override
     public void onBindViewHolder(FlickrImageViewHolder flickrImageViewHolder, int i) {
-
         Photo photoItem = mPhotosList.get(i);
-        Log.d(LOG_TAG," Processing: " + photoItem.getmTitle() + " ---> " + Integer.toString(i));
+        Log.d(LOG_TAG,"Processing: " + photoItem.getmTitle() + " --> " + Integer.toString(i));
+
         Picasso.with(mContext).load(photoItem.getmImage())
                 .error(R.drawable.placeholder)
                 .placeholder(R.drawable.placeholder)
                 .into(flickrImageViewHolder.thumbnail);
-
         flickrImageViewHolder.title.setText(photoItem.getmTitle());
     }
 

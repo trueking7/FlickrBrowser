@@ -13,8 +13,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected Toolbar activateToolbar() {
         if(mToolbar == null) {
-            mToolbar = (Toolbar)
-                    findViewById(R.id.app_bar);
+            mToolbar = (Toolbar) findViewById(R.id.app_bar);
             if(mToolbar != null) {
                 setSupportActionBar(mToolbar);
             }
@@ -22,12 +21,12 @@ public class BaseActivity extends AppCompatActivity {
         return mToolbar;
     }
 
-    protected Toolbar activateToolbarWithHomeEnabled(){
+    protected Toolbar activateToolbarWithHomeEnabled() {
         activateToolbar();
-        if(mToolbar != null){
+        if(mToolbar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         return mToolbar;
+
     }
 }
-

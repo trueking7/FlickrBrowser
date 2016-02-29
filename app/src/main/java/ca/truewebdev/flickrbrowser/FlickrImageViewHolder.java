@@ -14,7 +14,7 @@ public class FlickrImageViewHolder extends RecyclerView.ViewHolder {
 
     public FlickrImageViewHolder(View view) {
         super(view);
-        this.thumbnail = (ImageView)view.findViewById(R.id.thumbnail);
+        this.thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
         this.title = (TextView) view.findViewById(R.id.title);
     }
 }

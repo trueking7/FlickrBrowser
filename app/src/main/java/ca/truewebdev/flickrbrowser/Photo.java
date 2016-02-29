@@ -11,7 +11,6 @@ public class Photo {
     private String mTags;
     private String mImage;
 
-
     public Photo(String mTitle, String mAuthor, String mAuthorId, String mLink, String mTags, String mImage) {
         this.mTitle = mTitle;
         this.mAuthor = mAuthor;
@@ -19,10 +18,6 @@ public class Photo {
         this.mLink = mLink;
         this.mTags = mTags;
         this.mImage = mImage;
-    }
-
-    public String getmLink() {
-        return mLink;
     }
 
     public String getmTitle() {
@@ -35,6 +30,10 @@ public class Photo {
 
     public String getmAuthorId() {
         return mAuthorId;
+    }
+
+    public String getmLink() {
+        return mLink;
     }
 
     public String getmTags() {
@@ -51,6 +50,7 @@ public class Photo {
                 "mTitle='" + mTitle + '\'' +
                 ", mAuthor='" + mAuthor + '\'' +
                 ", mAuthorId='" + mAuthorId + '\'' +
+                ", mLink='" + mLink + '\'' +
                 ", mTags='" + mTags + '\'' +
                 ", mImage='" + mImage + '\'' +
                 '}';

@@ -1,3 +1,4 @@
+-keep class android.support.v7.widget.SearchView { *; }
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
 # in C:\Users\True\AppData\Local\Android\sdk1/tools/proguard/proguard-android.txt
