@@ -23,26 +23,17 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
-//        GetRawData theRawData = new GetRawData("https://api.flickr.com/services/feeds/photos_public.gne?tags=android,lollipop&format=json&nojsoncallback=1");
         activateToolbar();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ProcessPhotos processPhotos = new ProcessPhotos("google",true);
-        processPhotos.execute();
+        flickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(MainActivity.this,
+                new ArrayList<Photo>());
+        mRecyclerView.setAdapter(flickrRecyclerViewAdapter);
+
+
     }
 
 
@@ -64,7 +55,7 @@ public class MainActivity extends BaseActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-        if(id == R.id.menu_search) {
+        if (id == R.id.menu_search) {
             Intent intent = new Intent(this, SearchActivity.class);
             startActivity(intent);
             return true;
@@ -76,17 +67,18 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(flickrRecyclerViewAdapter != null) {
-            String query = getSavedPreferenceData(FLICKR_QUERY);
-            if(query.length() >0) {
-                ProcessPhotos processPhotos = new ProcessPhotos(query, true);
-                processPhotos.execute();
-            }
+
+        String query = getSavedPreferenceData(FLICKR_QUERY);
+        if (query.length() > 0) {
+            ProcessPhotos processPhotos = new ProcessPhotos(query, true);
+            processPhotos.execute();
         }
+
     }
 
     private String getSavedPreferenceData(String key) {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences sharedPref = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
         return sharedPref.getString(key, "");
     }
 
@@ -106,8 +98,8 @@ public class MainActivity extends BaseActivity {
 
             protected void onPostExecute(String webData) {
                 super.onPostExecute(webData);
-                flickrRecyclerViewAdapter = new FlickrRecyclerViewAdapter(MainActivity.this, getMPhotos());
-                mRecyclerView.setAdapter(flickrRecyclerViewAdapter);
+                flickrRecyclerViewAdapter.loadNewData(getPhotos());
+
 
             }
         }

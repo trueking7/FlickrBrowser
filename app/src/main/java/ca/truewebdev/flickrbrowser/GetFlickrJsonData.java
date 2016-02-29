@@ -21,7 +21,7 @@ public class GetFlickrJsonData extends GetRawData {
 
     public GetFlickrJsonData(String searchCriteria, boolean matchAll) {
         super(null);
-        createAndUpdateUri(searchCriteria,matchAll);
+        createAndUpdateUri(searchCriteria, matchAll);
         mPhotos = new ArrayList<Photo>();
     }
 
@@ -49,7 +49,7 @@ public class GetFlickrJsonData extends GetRawData {
         return mDestinationUri != null;
     }
 
-    public List<Photo> getMPhotos() {
+    public List<Photo> getPhotos() {
         return mPhotos;
     }
 
